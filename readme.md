@@ -7,7 +7,7 @@ This is a boilerplate project used for starting new projects!
 Complete the following steps to set up a new boilerplate:
 
 1. Clone this repo
-2. 'cd' into cloned repository
+2. `cd` into cloned repository
 3. Make a fresh start of the git history with `rm -rf .git && git init`
 4. Install dependencies with `npm install`
 5. Move the example .env file to `.env` that will be ignored by git and read by and read by the express server `mv example.env .env`
