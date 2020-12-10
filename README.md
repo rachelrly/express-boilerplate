@@ -12,6 +12,7 @@ Complete the following steps to set up a new boilerplate:
 4. Install dependencies with `npm install`
 5. Move the example .env file to `.env` that will be ignored by git and read by and read by the express server `mv example.env .env`
 6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+7. If using PostgreSQL with Postgrator, checkout the `psql` branch `git checkout psql`
 
 ## Scripts
 
@@ -19,8 +20,14 @@ Start the application `npm start`
 
 Start the nodemon for the application `npm run dev`
 
+Run database migrations `npm run migrate`
+
 Run the texts `npm test`
 
-## Deploying
+## Deploying to Heroku
 
-When your new project is ready for deployment, add the heroku app with `heroku create`. This will make a new git remote called "heroku" and you can then run `npm run deploy` which will push to this remotes master branch
+1. Log in to Heroku CLI `heroku login`
+2. Make a new project `heroku create <name-of-project>`
+3. Push to Heroku `git push heroku main`
+
+The following steps are to deploy a database with Heroku: 4. Create the database addon `heroku addons:create heroku-postgresql:hobby-dev` 5. Get the database url `heroku pg:credentials:url` 6. Insert the url `psql <url>` 7. Run production migrations `npm run migrate:production` 7. Seed the production database `cat <file-name> | heroku pg:psql`
