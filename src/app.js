@@ -16,7 +16,7 @@ const root = {
     }
 }
 
-app.get('/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true
