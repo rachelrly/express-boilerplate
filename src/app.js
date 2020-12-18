@@ -1,33 +1,26 @@
 require('dotenv').config()
 const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const helmet = require('helmet');
-const { NODE_ENV } = require('./config')
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
+
 const app = express()
 
-const morganOption = (NODE_ENV === 'production')
-    ? 'tiny'
-    : 'common';
+const schema = buildSchema(`
+type Query {
+    hello: String
+}`);
 
-app.use(morgan(morganOption))
-app.use(express.json())
-app.use(helmet())
-app.use(cors())
-
-app.get('/', (req, res) => {
-    res.send('Hello boilerplate!')
-})
-
-app.use(function errorHandler(error, req, res, next) {
-    let response
-    if (NODE_ENV === 'production') {
-        response = { error: { message: 'server error' } }
-    } else {
-        console.log(error)
-        response = { message: error.message, error }
+const root = {
+    hello: () => {
+        return 'Hello world!'
     }
-    res.status(500).json(response)
-})
+}
+
+app.get('/graphql', graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true
+}));
+
 
 module.exports = app;

@@ -3,5 +3,5 @@ const app = require('./app')
 const { PORT } = require('./config')
 
 app.listen(PORT, () => {
-    console.log(`server listening at http://localhost:${PORT}`)
+    console.log(`GraphQL server is running at http://localhost:${PORT}`)
 })
