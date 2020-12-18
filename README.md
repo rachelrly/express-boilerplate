@@ -13,7 +13,8 @@ Complete the following steps to set up a new boilerplate:
 5. Move the example .env file to `.env` that will be ignored by git and read by and read by the express server `mv example.env .env`
 6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
 7. If using PostgreSQL with Postgrator, checkout the `psql` branch `git checkout psql`
-8. For a boiler plate with JWT auth system in place, checkout the `auth` branch `git checkout auth`
+8. For a REST API boiler plate with JWT auth system in place, checkout the `auth` branch `git checkout auth`
+9. For a simple Express/GraphQL server checkout the `graphql` branch `git checkout graphql`
 
 ## Scripts
 
