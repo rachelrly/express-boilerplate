@@ -17,9 +17,7 @@ Complete the following steps to set up a new boilerplate:
 
 ## Scripts
 
-Start the application `npm start`
-
-Start the nodemon for the application `npm run dev`
+Start the GraphQL server with `node src/server.js`
 
 Run database migrations `npm run migrate`
 

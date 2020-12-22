@@ -1,27 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const helmet = require('helmet');
+const cors = require('cors');
+//const helmet = require('helmet');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const schema = require('./schema/schema');
 
 const app = express();
-app.use(helmet());
-
-
-const schema = buildSchema(`
-type Query {
-    hello: String
-}`);
-
-const root = {
-    hello: () => {
-        return 'Hello world!'
-    }
-};
+app.use(cors());
+//app.use(helmet());
 
 app.use('/graphql', graphqlHTTP({
-    schema: schema,
-    rootValue: root,
+    schema,
     graphiql: true
 }));
 
